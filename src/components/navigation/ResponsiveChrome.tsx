@@ -4,10 +4,10 @@ import { ReactNode, useEffect, useState } from "react";
 import BottomNav from "./BottomNav";
 import DesktopRail from "./DesktopRail";
 import DesktopSidebar from "./DesktopSidebar";
-import Header from "./Header";
 import ExamTabs from "./ExamTabs";
+import Header from "./Header";
 
-const MOBILE_TOP_CHROME_HEIGHT = 90;
+const DESKTOP_BREAKPOINT = 1024;
 
 export default function ResponsiveChrome({ children }: { children: ReactNode }) {
   const [isDesktop, setIsDesktop] = useState(false);
@@ -18,8 +18,8 @@ export default function ResponsiveChrome({ children }: { children: ReactNode }) 
     let lastY = window.scrollY;
     let raf = 0;
 
-    const update = () => {
-      const desktop = window.innerWidth >= 1024;
+    const sync = () => {
+      const desktop = window.innerWidth >= DESKTOP_BREAKPOINT;
       const y = window.scrollY;
       const delta = y - lastY;
 
@@ -27,22 +27,22 @@ export default function ResponsiveChrome({ children }: { children: ReactNode }) 
 
       if (desktop) {
         setChromeVisible(true);
-        setHideBottomNav(true);
+        setHideBottomNav(false);
         lastY = y;
         return;
       }
 
-      if (y < 20) {
+      if (y <= 12) {
         setChromeVisible(true);
         setHideBottomNav(false);
         lastY = y;
         return;
       }
 
-      if (delta > 10 && y > 72) {
+      if (delta > 12 && y > 72) {
         setChromeVisible(false);
         setHideBottomNav(true);
-      } else if (delta < -6) {
+      } else if (delta < -8) {
         setChromeVisible(true);
         setHideBottomNav(false);
       }
@@ -50,27 +50,26 @@ export default function ResponsiveChrome({ children }: { children: ReactNode }) 
       lastY = y;
     };
 
-    const onScroll = () => {
+    const schedule = () => {
       cancelAnimationFrame(raf);
-      raf = requestAnimationFrame(update);
+      raf = requestAnimationFrame(sync);
     };
 
-    update();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", update);
+    sync();
+    window.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("resize", schedule);
 
     return () => {
       cancelAnimationFrame(raf);
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", update);
+      window.removeEventListener("scroll", schedule);
+      window.removeEventListener("resize", schedule);
     };
   }, []);
 
   const topChromeHidden = !isDesktop && !chromeVisible;
-  const mainOffset = isDesktop || chromeVisible ? MOBILE_TOP_CHROME_HEIGHT : 0;
 
   return (
-    <div className="min-h-screen bg-[#08111F] text-white">
+    <div className="min-h-dvh">
       <div
         className={`fixed inset-x-0 top-0 z-50 transition-transform duration-300 ease-out will-change-transform ${
           topChromeHidden ? "-translate-y-full" : "translate-y-0"
@@ -81,19 +80,11 @@ export default function ResponsiveChrome({ children }: { children: ReactNode }) 
       </div>
 
       <main
-        className={`mx-auto w-full max-w-[1680px] px-3 pb-24 sm:px-4 lg:grid lg:grid-cols-[250px_minmax(0,1fr)] lg:gap-5 xl:grid-cols-[250px_minmax(0,1fr)_360px] transition-transform duration-300 ease-out will-change-transform`}
-        style={{
-          transform: `translateY(${mainOffset}px)`,
-        }}
+        className="mx-auto grid w-full max-w-[1760px] gap-4 px-3 pb-[calc(7.75rem+env(safe-area-inset-bottom))] sm:px-4 md:px-6 lg:grid-cols-[248px_minmax(0,1fr)] lg:gap-5 xl:grid-cols-[248px_minmax(0,1fr)_336px] 2xl:grid-cols-[264px_minmax(0,1fr)_356px]"
+        style={{ paddingTop: "5.9rem" }}
       >
         <DesktopSidebar />
-
-        <section className="min-w-0">
-          <div className="mx-auto w-full max-w-[430px] lg:max-w-[840px]">
-            {children}
-          </div>
-        </section>
-
+        <section className="min-w-0">{children}</section>
         <DesktopRail />
       </main>
 

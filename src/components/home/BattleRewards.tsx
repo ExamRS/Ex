@@ -1,11 +1,11 @@
 "use client";
 
-import { ChevronRight, Flame, Gift, Sparkles, Users2 } from "lucide-react";
+import { Gift, Sparkles, Trophy, Users2 } from "lucide-react";
 
 export default function BattleRewards() {
   return (
-    <section className="grid gap-3 sm:grid-cols-2">
-      <article className="relative overflow-hidden rounded-[24px] bg-[#0D1424] p-4">
+    <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-1">
+      <article className="relative overflow-hidden rounded-[24px] border border-white/5 bg-[#0D1424]/94 p-4 backdrop-blur-xl">
         <div className="absolute -right-8 top-0 h-28 w-28 rounded-full bg-cyan-400/10 blur-3xl" />
         <div className="relative">
           <div className="inline-flex items-center gap-2 rounded-full bg-white/[0.04] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-cyan-400">
@@ -21,7 +21,7 @@ export default function BattleRewards() {
             Win accuracy, speed, and rank points in a live battle.
           </p>
 
-          <div className="mt-4 flex items-center gap-2">
+          <div className="mt-4 flex flex-wrap items-center gap-2">
             <button
               type="button"
               className="inline-flex h-9 items-center rounded-full bg-cyan-400 px-4 text-[12px] font-semibold text-black"
@@ -36,7 +36,7 @@ export default function BattleRewards() {
         </div>
       </article>
 
-      <article className="relative overflow-hidden rounded-[24px] bg-[#0D1424] p-4">
+      <article className="relative overflow-hidden rounded-[24px] border border-white/5 bg-[#0D1424]/94 p-4 backdrop-blur-xl">
         <div className="absolute -left-8 bottom-0 h-28 w-28 rounded-full bg-fuchsia-400/10 blur-3xl" />
         <div className="relative">
           <div className="inline-flex items-center gap-2 rounded-full bg-white/[0.04] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-fuchsia-300">
@@ -52,7 +52,7 @@ export default function BattleRewards() {
             Keep the streak alive and claim the reward vault.
           </p>
 
-          <div className="mt-4 flex items-center gap-2">
+          <div className="mt-4 flex flex-wrap items-center gap-2">
             <button
               type="button"
               className="inline-flex h-9 items-center rounded-full bg-fuchsia-500 px-4 text-[12px] font-semibold text-white"
@@ -65,11 +65,7 @@ export default function BattleRewards() {
             </span>
 
             <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-white/[0.04] text-slate-300">
-              <Flame size={16} />
-            </span>
-
-            <span className="ml-auto inline-flex h-9 w-9 items-center justify-center rounded-full bg-white/[0.04] text-slate-300">
-              <ChevronRight size={16} />
+              <Trophy size={16} />
             </span>
           </div>
         </div>

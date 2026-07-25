@@ -1,11 +1,10 @@
-import "./globals.css";
 import type { Metadata } from "next";
-import Providers from "@/providers";
-import AppShell from "@/components/layout/AppShell";
+import "./globals.css";
+import AppShell from "../components/layout/AppShell";
 
 export const metadata: Metadata = {
   title: "ExamRS",
-  description: "Exam Reverse Study Platform",
+  description: "Premium AI-powered government exam preparation platform.",
 };
 
 export default function RootLayout({
@@ -14,11 +13,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en">
       <body>
-        <Providers>
-          <AppShell>{children}</AppShell>
-        </Providers>
+        <AppShell>{children}</AppShell>
       </body>
     </html>
   );

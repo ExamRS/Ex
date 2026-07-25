@@ -2,23 +2,61 @@
 
 :root {
   color-scheme: dark;
+  --app-bg: #08111f;
+  --app-surface: rgba(13, 20, 36, 0.94);
+  --app-border: rgba(255, 255, 255, 0.06);
+  --app-text: #f8fafc;
+  --app-muted: #94a3b8;
+  --app-accent: #22d3ee;
+  --app-accent-2: #6366f1;
 }
 
 html {
   scroll-behavior: smooth;
-  overscroll-behavior-y: none;
+  overscroll-behavior: none;
 }
 
 body {
-  overflow-x: hidden;
-  background: #08111F;
-  color: #F8FAFC;
-  -webkit-overflow-scrolling: touch;
-  touch-action: pan-y;
+  min-height: 100dvh;
+  overflow-x: clip;
+  background: var(--app-bg);
+  color: var(--app-text);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+#\_\_next {
+  min-height: 100dvh;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+img,
+svg,
+video,
+canvas {
+  display: block;
+  max-width: 100%;
 }
 
 * {
   -webkit-tap-highlight-color: transparent;
+}
+
+::selection {
+  background: rgba(34, 211, 238, 0.24);
+  color: #fff;
 }
 
 .scrollbar-hide {
@@ -29,4 +67,19 @@ body {
 
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

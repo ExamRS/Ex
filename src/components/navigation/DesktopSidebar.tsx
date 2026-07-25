@@ -42,15 +42,21 @@ const sections = [
 
 export default function DesktopSidebar() {
   return (
-    <aside className="hidden lg:flex lg:flex-col">
-      <div className="sticky top-[96px] flex h-[calc(100dvh-112px)] flex-col rounded-[28px] bg-[#0D1424] p-3">
-        <div className="px-2 pb-3">
-          <p className="text-[10px] uppercase tracking-[0.22em] text-slate-500">
+    <aside className="hidden lg:block">
+      <div className="sticky top-[104px] h-[calc(100dvh-124px)] overflow-hidden rounded-[28px] border border-white/5 bg-[#0D1424]/94 shadow-[0_28px_90px_-56px_rgba(34,211,238,0.3)] backdrop-blur-xl">
+        <div className="border-b border-white/5 px-4 py-4">
+          <p className="text-[10px] uppercase tracking-[0.24em] text-slate-500">
             Navigation
+          </p>
+          <h2 className="mt-2 text-[18px] font-black tracking-tight text-white">
+            Exam<span className="text-cyan-400">RS</span>
+          </h2>
+          <p className="mt-1 text-[11px] text-slate-400">
+            Premium preparation workspace
           </p>
         </div>
 
-        <div className="flex-1 space-y-4 overflow-y-auto pr-1">
+        <div className="h-[calc(100%-230px)] space-y-4 overflow-y-auto px-3 py-4 scrollbar-hide">
           {sections.map((section) => (
             <div key={section.title}>
               <p className="px-2 pb-2 text-[10px] uppercase tracking-[0.2em] text-slate-500">
@@ -65,6 +71,7 @@ export default function DesktopSidebar() {
                   return (
                     <button
                       key={item.label}
+                      type="button"
                       className={`flex w-full items-center gap-3 rounded-2xl px-3 py-3 text-left transition ${
                         active
                           ? "bg-cyan-400/12 text-cyan-400"
@@ -81,17 +88,22 @@ export default function DesktopSidebar() {
           ))}
         </div>
 
-        <div className="mt-3 rounded-[24px] bg-gradient-to-br from-cyan-400/15 via-indigo-500/10 to-fuchsia-500/10 p-4">
-          <p className="text-[10px] uppercase tracking-[0.2em] text-cyan-400">
-            Go Premium
-          </p>
-          <p className="mt-2 text-[14px] font-semibold leading-5 text-white">
-            Unlock advanced analytics and faster insights
-          </p>
+        <div className="border-t border-white/5 p-4">
+          <div className="rounded-[24px] bg-gradient-to-br from-cyan-400/15 via-indigo-500/10 to-fuchsia-500/10 p-4">
+            <p className="text-[10px] uppercase tracking-[0.2em] text-cyan-400">
+              Go Premium
+            </p>
+            <p className="mt-2 text-[14px] font-semibold leading-5 text-white">
+              Unlock advanced analytics and faster insights
+            </p>
 
-          <button className="mt-4 inline-flex h-10 w-full items-center justify-center rounded-full bg-cyan-400 text-[13px] font-semibold text-black transition hover:opacity-95">
-            Upgrade Now
-          </button>
+            <button
+              type="button"
+              className="mt-4 inline-flex h-10 w-full items-center justify-center rounded-full bg-cyan-400 text-[13px] font-semibold text-black transition hover:opacity-95"
+            >
+              Upgrade Now
+            </button>
+          </div>
         </div>
       </div>
     </aside>

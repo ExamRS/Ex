@@ -10,9 +10,9 @@ const mistakes = [
 
 export default function ReverseStudyCard() {
   return (
-    <section className="relative overflow-hidden rounded-[24px] bg-[#0D1424] p-4">
+    <section className="relative overflow-hidden rounded-[24px] border border-white/5 bg-[#0D1424]/94 p-4 backdrop-blur-xl">
       <div className="absolute -left-8 top-0 h-28 w-28 rounded-full bg-cyan-400/10 blur-3xl" />
-      <div className="relative flex items-start justify-between gap-4">
+      <div className="relative flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
         <div className="min-w-0">
           <div className="inline-flex items-center gap-2 rounded-full bg-white/[0.04] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-cyan-400">
             <RotateCcw size={12} />
@@ -33,7 +33,7 @@ export default function ReverseStudyCard() {
         </div>
       </div>
 
-      <div className="mt-4 grid gap-2">
+      <div className="mt-4 grid gap-2 sm:grid-cols-3">
         {mistakes.map((item) => (
           <div key={item} className="rounded-2xl bg-white/[0.03] px-3 py-3">
             <p className="text-[12px] font-medium text-white">{item}</p>
@@ -41,12 +41,12 @@ export default function ReverseStudyCard() {
         ))}
       </div>
 
-      <div className="mt-4 flex items-center justify-between gap-3">
+      <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <p className="text-[11px] text-slate-500">Weak set: 3 topics waiting</p>
 
         <button
           type="button"
-          className="inline-flex h-9 items-center gap-2 rounded-full bg-cyan-400 px-4 text-[12px] font-semibold text-black"
+          className="inline-flex h-9 w-full items-center justify-center gap-2 rounded-full bg-cyan-400 px-4 text-[12px] font-semibold text-black sm:w-auto"
         >
           Open weak set
           <ArrowRight size={14} />

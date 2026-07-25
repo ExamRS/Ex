@@ -4,9 +4,9 @@ import { ArrowRight, Brain, Sparkles } from "lucide-react";
 
 export default function AiNudgeCard() {
   return (
-    <section className="relative overflow-hidden rounded-[24px] bg-[#0D1424] p-4">
+    <section className="relative overflow-hidden rounded-[24px] border border-white/5 bg-[#0D1424]/94 p-4 backdrop-blur-xl">
       <div className="absolute -right-8 top-0 h-24 w-24 rounded-full bg-violet-400/10 blur-3xl" />
-      <div className="relative flex items-start justify-between gap-4">
+      <div className="relative flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
         <div className="flex min-w-0 items-start gap-3">
           <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-white/[0.04] text-violet-300">
             <Brain size={18} />
@@ -38,7 +38,7 @@ export default function AiNudgeCard() {
 
         <button
           type="button"
-          className="inline-flex h-10 shrink-0 items-center gap-2 rounded-full bg-gradient-to-r from-pink-500 to-fuchsia-500 px-4 text-[12px] font-semibold text-white"
+          className="inline-flex h-10 w-full shrink-0 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-pink-500 to-fuchsia-500 px-4 text-[12px] font-semibold text-white sm:w-auto"
         >
           Revise now
           <Sparkles size={14} />

@@ -1,10 +1,5 @@
-import HomeFeed from "@/components/home/HomeFeed";
-import ResponsiveChrome from "@/components/navigation/ResponsiveChrome";
+import HomeFeed from "../components/home/HomeFeed";
 
 export default function HomePage() {
-  return (
-    <ResponsiveChrome>
-      <HomeFeed />
-    </ResponsiveChrome>
-  );
+  return <HomeFeed />;
 }
